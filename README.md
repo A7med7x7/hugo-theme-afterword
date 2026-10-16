@@ -1,5 +1,7 @@
 # Nightfall A7
 
+[![CI](https://img.shields.io/github/actions/workflow/status/A7med7x7/hugo-theme-nightfall-a7/ci.yml?branch=main&label=CI)](https://github.com/A7med7x7/hugo-theme-nightfall-a7/actions/workflows/ci.yml)
+
 A reading-focused Hugo theme for personal essays and notes. It started as a fork of [Nightfall](https://github.com/LordMathis/hugo-theme-nightfall) by Matúš Námešný. On top of Nightfall it adds a serif reading layout, a light mode, post series ("sequences"), full-text search, and Open Graph tags.
 
 See it in use at [a7med7x7.github.io](https://a7med7x7.github.io/).
