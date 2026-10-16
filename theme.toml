@@ -1,0 +1,18 @@
+name = "Nightfall A7"
+license = "MIT"
+licenselink = "https://github.com/A7med7x7/hugo-theme-nightfall-a7/blob/main/LICENSE"
+description = "A reading-focused Hugo theme for personal essays, based on Nightfall"
+homepage = "https://github.com/A7med7x7/hugo-theme-nightfall-a7/"
+demosite = "https://a7med7x7.github.io/"
+tags = ["minimal", "dark", "light", "blog", "personal", "search", "series"]
+features = ["blog", "sass", "dark", "light", "search", "series", "open-graph"]
+min_version = "0.128.0"
+
+[author]
+name = "Ahmed Alghali"
+homepage = "https://a7med7x7.github.io/"
+
+[original]
+author = "Matúš Námešný"
+homepage = "https://namesny.com"
+repo = "https://github.com/LordMathis/hugo-theme-nightfall"

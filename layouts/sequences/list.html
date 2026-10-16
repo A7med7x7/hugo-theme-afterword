@@ -1,0 +1,35 @@
+{{ define "title" }}
+Sequences | {{ .Site.Params.author.name }}
+{{ end }}
+
+{{ define "main" }}
+<div class="sequences-shell">
+
+  {{/* ── LEFT SIDEBAR ── */}}
+  <nav class="seq-sidebar">
+    <p class="seq-sidebar-label">Sequences</p>
+    <ul class="seq-sidebar-list">
+      {{ range .Pages }}
+        <li>
+          <a href="{{ .RelPermalink }}"
+             class="seq-sidebar-link {{ if eq .RelPermalink $.RelPermalink }}active{{ end }}">
+            {{ .Title }}
+          </a>
+        </li>
+      {{ end }}
+    </ul>
+  </nav>
+
+  {{/* ── MAIN CONTENT: intro text on the /sequences root ── */}}
+  <main class="seq-main">
+    <div class="seq-intro">
+      {{ with .Params.intro_label }}<p class="seq-intro-label">{{ . }}</p>{{ end }}
+      <h1 class="seq-intro-title">{{ .Params.intro_title | default .Title }}</h1>
+      <div class="seq-intro-body">
+        {{ .Content }}
+      </div>
+    </div>
+  </main>
+
+</div>
+{{ end }}

@@ -1,0 +1,7 @@
+.hugo_build.lock
+public/
+resources/
+exampleSite/public/
+exampleSite/resources/
+node_modules/
+.DS_Store

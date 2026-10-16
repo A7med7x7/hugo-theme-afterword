@@ -1,0 +1,48 @@
+{{ define "title" }}
+{{ .Title }} | {{ .Site.Params.author.name }}
+{{ end }}
+
+{{ define "main" }}
+
+<div class="listPage">
+    <div class="listHeader">
+        <h1>{{ .Title }}</h1>
+    </div>
+
+    {{ with .Content }}
+    <div class="listContent">
+        {{- . -}}
+    </div>
+    {{ end }}
+
+    <div class="listFeed" role="list">
+        <!-- Use .Paginator.Pages instead of .Pages -->
+        {{ range .Paginator.Pages }}
+        <a class="postListLink" href="{{ .Permalink }}">
+            <!-- [html-validate-disable-next prefer-native-element] -->
+            <div class="postListItem" role="listitem">
+                <div class="postHeader">
+                    <span class="postTitle">{{ .Title }}</span>
+                    {{ $formattedDate := .Date.Format "2006-01-02" }}
+                    <time class="postDate" datetime="{{ $formattedDate }}">{{ .Date | time.Format ":date_long" }}</time>
+                </div>
+                <div class="postExcerpt">
+                    {{ .Summary }}
+                </div>
+            </div>
+        </a>
+        {{ end }}
+    </div>
+
+    <!-- Pagination Navigation -->
+    <nav class="pagination">
+        {{ if .Paginator.HasPrev }}
+            <a href="{{ .Paginator.Prev.URL }}" class="prev">Previous</a>
+        {{ end }}
+        {{ if .Paginator.HasNext }}
+            <a href="{{ .Paginator.Next.URL }}" class="next">Next</a>
+        {{ end }}
+    </nav>
+</div>
+
+{{ end }}

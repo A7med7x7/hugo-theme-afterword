@@ -1,0 +1,64 @@
+<link rel="icon" href="{{ site.Params.favicon | default "/logo/favicon.svg" | relURL }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link rel="stylesheet" href="{{ "css/custom-ui.css" | relURL }}">
+<link rel="stylesheet" href="{{ "css/light-theme.css" | relURL }}">
+
+<!-- Open Graph / Facebook -->
+{{ $siteDescription := or .Site.Params.siteDescription .Site.Params.sitedescription .Site.Params.SiteDescription .Site.Title }}
+{{ $pageTitle := .Title }}
+{{ $pageDescription := $siteDescription }}
+
+{{ if .IsHome }}
+  {{ $pageTitle = .Site.Title }}
+{{ else if .IsPage }}
+  {{ with .Description }}
+    {{ $pageDescription = . }}
+  {{ else }}
+    {{ $pageDescription = .Summary | plainify | htmlUnescape | truncate 160 }}
+  {{ end }}
+{{ else }}
+  {{ with .Description }}
+    {{ $pageDescription = . }}
+  {{ end }}
+{{ end }}
+
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:site_name" content="{{ .Site.Title }}">
+<meta property="og:title" content="{{ $pageTitle }}">
+<meta property="og:description" content="{{ $pageDescription }}">
+
+{{/* OG image: frontmatter `images` wins. If params.ogImagesDir is set,
+     posts use <dir>/<slug>.png and other pages <dir>/_site.png.
+     Otherwise fall back to params.ogImage, if any. */}}
+{{ $ogImage := "" }}
+{{- with .Params.images -}}
+  {{ $ogImage = index . 0 | absURL }}
+{{- else -}}
+  {{- with site.Params.ogImagesDir -}}
+    {{ if and $.IsPage (eq $.Section "posts") }}
+      {{ $ogImage = printf "%s/%s.png" . $.File.ContentBaseName | absURL }}
+    {{ else }}
+      {{ $ogImage = printf "%s/_site.png" . | absURL }}
+    {{ end }}
+  {{- else -}}
+    {{- with site.Params.ogImage -}}{{ $ogImage = . | absURL }}{{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{ with $ogImage }}
+<meta property="og:image" content="{{ $ogImage }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{{ $pageTitle }}">
+{{ end }}
+
+<!-- Twitter -->
+<meta property="twitter:card" content="{{ if $ogImage }}summary_large_image{{ else }}summary{{ end }}">
+<meta property="twitter:url" content="{{ .Permalink }}">
+<meta property="twitter:title" content="{{ $pageTitle }}">
+<meta property="twitter:description" content="{{ $pageDescription }}">
+{{ with $ogImage }}
+<meta property="twitter:image" content="{{ $ogImage }}">
+<meta property="twitter:image:alt" content="{{ $pageTitle }}">
+{{ end }}

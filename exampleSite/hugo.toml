@@ -1,0 +1,75 @@
+baseURL = "https://example.org/"
+locale = "en-us"
+title = "Nightfall A7"
+theme = "hugo-theme-nightfall-a7"
+
+[params]
+user = "hello"
+hostname = "example.org"
+siteDescription = "A demo of the Nightfall A7 Hugo theme."
+
+openLinksInNewTab = true
+
+showMetadata = true
+showPublishedDate = true
+showReadingTime = true
+showTags = true
+showCategories = true
+
+# Optional: default Open Graph image, or a folder of per-post images
+# ogImage = "/images/og-default.png"
+# ogImagesDir = "/og"
+
+# Optional: swap the default EB Garamond for another font
+# [params.fonts]
+# url = "https://fonts.googleapis.com/css2?family=Lora&display=swap"
+# body = "'Lora', serif"
+# heading = "'Lora', serif"
+
+[params.author]
+name = "Nightfall A7"
+email = "email@example.com"
+
+[[params.social]]
+key = 0
+name = "github"
+url = "https://github.com/A7med7x7/hugo-theme-nightfall-a7"
+icon = "fa-brands fa-github"
+target = "_blank"
+aria = "GitHub"
+
+[[params.social]]
+key = 1
+name = "email"
+url = "mailto:email@example.com"
+icon = "fa-solid fa-envelope"
+aria = "Email"
+
+[taxonomies]
+tag = "tags"
+category = "categories"
+series = "series"
+
+[markup.goldmark.renderer]
+unsafe = true
+
+[pagination]
+pagerSize = 6
+
+[menu]
+  [[menu.header]]
+    name = "posts"
+    weight = 10
+    url = "/posts"
+  [[menu.header]]
+    name = "sequences"
+    weight = 15
+    url = "/sequences"
+  [[menu.header]]
+    name = "search"
+    weight = 20
+    url = "/search"
+  [[menu.header]]
+    name = "about"
+    weight = 30
+    url = "/about"

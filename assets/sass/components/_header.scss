@@ -1,0 +1,164 @@
+@use "../utils/variables" as v;
+
+.header {
+  font-family: v.$fontHeader;
+  padding: 0 24px;
+  min-height: 68px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: v.$width;
+  box-sizing: border-box;
+}
+
+.headerWrapper {
+  overflow: visible;
+  box-sizing: border-box;
+  background: rgba(37, 38, 39, 0.92);
+  border-bottom: 1px solid rgba(248, 248, 255, 0.12);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.headerLinks {
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    li {
+      display: inline-flex;
+
+      a {
+        color: rgba(248, 248, 255, 0.8);
+        text-decoration: none;
+        border-radius: 999px;
+        padding: 8px 14px;
+        border: 1px solid transparent;
+        transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+
+        &:hover,
+        &:focus-visible {
+          color: v.$white;
+          border-color: rgba(248, 248, 255, 0.2);
+          background-color: rgba(248, 248, 255, 0.06);
+          outline: none;
+        }
+      }
+    }
+  }
+}
+
+.terminal,
+.terminal:hover {
+  color: v.$white;
+  text-decoration: none;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+}
+
+.hamb {
+  cursor: pointer;
+  display: none;
+  padding: 8px;
+  border: 1px solid rgba(248, 248, 255, 0.14);
+  border-radius: 8px;
+}
+
+.hamb-line {
+  background: rgba(248, 248, 255, 0.92);
+  display: block;
+  height: 2px;
+  position: relative;
+  width: 20px;
+} /* Style span tag */
+
+.hamb-line::before,
+.hamb-line::after {
+  background: rgba(248, 248, 255, 0.92);
+  content: "";
+  display: block;
+  height: 100%;
+  position: absolute;
+  transition: all 0.2s ease-out;
+  width: 100%;
+}
+.hamb-line::before {
+  top: 6px;
+}
+.hamb-line::after {
+  top: -6px;
+}
+
+.side-menu {
+  display: none;
+}
+
+.side-menu:checked ~ .headerLinks {
+  max-height: 100%;
+}
+.side-menu:checked ~ .hamb .hamb-line {
+  background: transparent;
+}
+.side-menu:checked ~ .hamb .hamb-line::before {
+  transform: rotate(-45deg);
+  top: 0;
+}
+.side-menu:checked ~ .hamb .hamb-line::after {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    padding: 0 16px;
+    width: 100%;
+  }
+
+  .headerLinks {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 16px;
+    right: 16px;
+    background: rgba(41, 42, 45, 0.98);
+    border: 1px solid rgba(248, 248, 255, 0.14);
+    border-radius: 12px;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      padding: 6px;
+
+      li {
+        width: 100%;
+
+        a {
+          display: block;
+          border-radius: 8px;
+        }
+      }
+    }
+  }
+
+  .side-menu:checked ~ .headerLinks {
+    max-height: 260px;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .hamb {
+    display: block;
+  }
+}
