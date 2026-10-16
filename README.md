@@ -4,13 +4,15 @@ A reading-focused Hugo theme for personal essays and notes. It started as a fork
 
 See it in use at [a7med7x7.github.io](https://a7med7x7.github.io/).
 
-![Dark mode post](images/screenshot.png)
+![Dark mode post](https://raw.githubusercontent.com/A7med7x7/hugo-theme-nightfall-a7/main/images/screenshot.png)
 
 | Light mode | Sequences |
 | --- | --- |
-| ![Light mode post](images/screenshot_light.png) | ![Sequence page](images/screenshot_sequences.png) |
+| ![Light mode post](https://raw.githubusercontent.com/A7med7x7/hugo-theme-nightfall-a7/main/images/screenshot_light.png) | ![Sequence page](https://raw.githubusercontent.com/A7med7x7/hugo-theme-nightfall-a7/main/images/screenshot_sequences.png) |
 
-## What's different from Nightfall
+## Why it's a separate theme
+
+Nightfall is a minimal terminal-style theme. Nightfall A7 keeps its header and color base but redesigns everything else for long-form reading, and adds features Nightfall doesn't have:
 
 - EB Garamond typography, plus a reading progress bar on posts
 - Light and dark modes that follow the reader's system setting
