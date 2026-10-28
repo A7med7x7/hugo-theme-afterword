@@ -2,7 +2,10 @@
 
 [![CI](https://img.shields.io/github/actions/workflow/status/A7med7x7/hugo-theme-afterword/ci.yml?branch=main&label=CI)](https://github.com/A7med7x7/hugo-theme-afterword/actions/workflows/ci.yml)
 
-A reading-focused Hugo theme for personal essays and notes. It started as a fork of [Nightfall](https://github.com/LordMathis/hugo-theme-nightfall) by Matúš Námešný. On top of Nightfall it adds a serif reading layout, a light mode, post series ("sequences"), full-text search, and Open Graph tags.
+A reading-focused Hugo theme for personal essays and notes, with a serif reading layout, a light mode, post series ("sequences"), full-text search, and Open Graph tags.
+
+> [!NOTE]
+> Afterword is built on top of [Nightfall](https://github.com/LordMathis/hugo-theme-nightfall) by [Matúš Námešný](https://namesny.com). It started as a fork, and Nightfall's header, Sass base, and templates are still part of it. See [Credits](#credits).
 
 See it in use at [a7med7x7.github.io](https://a7med7x7.github.io/).
 
@@ -22,6 +25,8 @@ Nightfall is a minimal terminal-style theme. Afterword keeps its header and colo
 - Sequences, which group posts into an ordered series with a cover card, a reading checklist, and previous/next links on each post
 - A search page powered by [Pagefind](https://pagefind.app/)
 - Open Graph and Twitter card tags, with optional per-post images
+- A home page that shows the site description and recent posts
+- Fallbacks to Hugo's standard settings, so a site with only a `title` renders fully
 - A reworked header, footer, and social links
 
 ## Requirements
@@ -242,7 +247,9 @@ feature_image = "/images/cover.jpg"   # optional, shown above the post
 
 ## Credits
 
-Based on [Nightfall](https://github.com/LordMathis/hugo-theme-nightfall) by [Matúš Námešný](https://namesny.com), released under the MIT license. The example content comes from Nightfall and the Hugo docs.
+Afterword is built on top of [Nightfall](https://github.com/LordMathis/hugo-theme-nightfall) by [Matúš Námešný](https://namesny.com), released under the MIT license. Thanks to Matúš for the theme it grew from. His copyright notice is kept in [LICENSE](LICENSE), and `theme.toml` lists Nightfall as the original.
+
+The example content comes from Nightfall and the Hugo docs.
 
 ## License
 
