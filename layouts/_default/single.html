@@ -1,5 +1,5 @@
 {{ define "title"}}
-{{ .Title }} | {{ .Site.Params.author.name }}
+{{ .Title }} | {{ partial "site-name.html" . }}
 {{ end }}
 
 {{ define "main" }}

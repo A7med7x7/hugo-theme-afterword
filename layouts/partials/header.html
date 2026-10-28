@@ -2,20 +2,36 @@
     <div class="header">
         <div>
             <a class="terminal" href="{{ .Site.BaseURL | relLangURL }}">
-                <span>{{ .Site.Params.user }}@{{ .Site.Params.hostname }} ~ $</span>
+                {{- if and site.Params.user site.Params.hostname }}
+                <span>{{ site.Params.user }}@{{ site.Params.hostname }} ~ $</span>
+                {{- else }}
+                <span>{{ site.Title }}</span>
+                {{- end }}
             </a>
         </div>
         <input class="side-menu" type="checkbox" id="side-menu">
         <label class="hamb" for="side-menu"><span class="hamb-line"></span></label>
         <nav class="headerLinks">
             <ul>
-                {{ range .Site.Menus.header }}
+                {{- $menu := site.Menus.header | default site.Menus.main }}
+                {{- if $menu }}
+                {{- range $menu }}
                 <li>
                     <a href="{{ .URL | absLangURL }}" title="{{ .Title }}" >
                         ~/{{- .Name -}}
                     </a>
                 </li>
-                {{ end }}
+                {{- end }}
+                {{- else }}
+                {{- /* No menu configured: link each top-level section. */}}
+                {{- range site.Sections }}
+                <li>
+                    <a href="{{ .RelPermalink }}" title="{{ .Title }}" >
+                        ~/{{- .Section -}}
+                    </a>
+                </li>
+                {{- end }}
+                {{- end }}
             </ul>
         </nav>
     </div>

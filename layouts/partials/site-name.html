@@ -1,0 +1,3 @@
+{{- /* The name shown in titles, the home heading and the footer:
+     params.author.name if set, otherwise the site title. */ -}}
+{{- return (site.Params.author.name | default site.Title) -}}

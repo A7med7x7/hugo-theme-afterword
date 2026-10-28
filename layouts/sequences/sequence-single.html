@@ -1,5 +1,5 @@
 {{ define "title" }}
-{{ .Title }} (sequence) | {{ .Site.Params.author.name }}
+{{ .Title }} (sequence) | {{ partial "site-name.html" . }}
 {{ end }}
 
 {{ define "main" }}
