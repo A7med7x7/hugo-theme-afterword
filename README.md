@@ -1,20 +1,20 @@
-# Nightfall A7
+# Afterword
 
-[![CI](https://img.shields.io/github/actions/workflow/status/A7med7x7/hugo-theme-nightfall-a7/ci.yml?branch=main&label=CI)](https://github.com/A7med7x7/hugo-theme-nightfall-a7/actions/workflows/ci.yml)
+[![CI](https://img.shields.io/github/actions/workflow/status/A7med7x7/hugo-theme-afterword/ci.yml?branch=main&label=CI)](https://github.com/A7med7x7/hugo-theme-afterword/actions/workflows/ci.yml)
 
 A reading-focused Hugo theme for personal essays and notes. It started as a fork of [Nightfall](https://github.com/LordMathis/hugo-theme-nightfall) by Matúš Námešný. On top of Nightfall it adds a serif reading layout, a light mode, post series ("sequences"), full-text search, and Open Graph tags.
 
 See it in use at [a7med7x7.github.io](https://a7med7x7.github.io/).
 
-![Dark mode post](https://raw.githubusercontent.com/A7med7x7/hugo-theme-nightfall-a7/main/images/screenshot.png)
+![Dark mode post](https://raw.githubusercontent.com/A7med7x7/hugo-theme-afterword/main/images/screenshot.png)
 
 | Light mode | Sequences |
 | --- | --- |
-| ![Light mode post](https://raw.githubusercontent.com/A7med7x7/hugo-theme-nightfall-a7/main/images/screenshot_light.png) | ![Sequence page](https://raw.githubusercontent.com/A7med7x7/hugo-theme-nightfall-a7/main/images/screenshot_sequences.png) |
+| ![Light mode post](https://raw.githubusercontent.com/A7med7x7/hugo-theme-afterword/main/images/screenshot_light.png) | ![Sequence page](https://raw.githubusercontent.com/A7med7x7/hugo-theme-afterword/main/images/screenshot_sequences.png) |
 
 ## Why it's a separate theme
 
-Nightfall is a minimal terminal-style theme. Nightfall A7 keeps its header and color base but redesigns everything else for long-form reading, and adds features Nightfall doesn't have:
+Nightfall is a minimal terminal-style theme. Afterword keeps its header and color base but redesigns everything else for long-form reading, and adds features Nightfall doesn't have:
 
 - EB Garamond typography, plus a reading progress bar on posts
 - Light and dark modes that follow the reader's system setting
@@ -35,13 +35,13 @@ Nightfall is a minimal terminal-style theme. Nightfall A7 keeps its header and c
 As a Git submodule:
 
 ```bash
-git submodule add https://github.com/A7med7x7/hugo-theme-nightfall-a7.git themes/hugo-theme-nightfall-a7
+git submodule add https://github.com/A7med7x7/hugo-theme-afterword.git themes/hugo-theme-afterword
 ```
 
 Then set the theme in `hugo.toml`:
 
 ```toml
-theme = "hugo-theme-nightfall-a7"
+theme = "hugo-theme-afterword"
 ```
 
 Or as a Hugo module (needs Go):
@@ -53,53 +53,58 @@ hugo mod init github.com/you/your-site
 ```toml
 [module]
   [[module.imports]]
-    path = "github.com/A7med7x7/hugo-theme-nightfall-a7"
+    path = "github.com/A7med7x7/hugo-theme-afterword"
 ```
 
 To try it with the example content:
 
 ```bash
-git clone https://github.com/A7med7x7/hugo-theme-nightfall-a7.git
-cd hugo-theme-nightfall-a7/exampleSite
+git clone https://github.com/A7med7x7/hugo-theme-afterword.git
+cd hugo-theme-afterword/exampleSite
 hugo server --themesDir ../..
 ```
 
 ## Configuration
 
-[exampleSite/hugo.toml](exampleSite/hugo.toml) is a complete working config. The main settings:
+A site with only a `title` works: the header, home page, page titles and footer fall back to it, and the menu links your top-level sections. [exampleSite/hugo.toml](exampleSite/hugo.toml) is a complete config. The main settings:
 
 ```toml
 title = "My Blog"
+copyright = "© 2026 Your Name"   # optional, replaces the footer text
 
 [params]
-user = "me"                 # the header shows me@example.org ~ $
-hostname = "example.org"
-siteDescription = "Used for meta and Open Graph descriptions."
+description = "Shown on the home page and in meta and Open Graph tags."
+homePosts = 5               # recent posts on the home page, 0 hides them
+# mainSections = ["posts"]  # sections the home page lists, defaults to the largest
 openLinksInNewTab = true    # external links open in a new tab
+# user = "me"               # set both to show a prompt, me@example.org ~ $,
+# hostname = "example.org"  # in the header instead of the site title
 
 [params.author]
-name = "Your Name"          # home page heading, page titles, footer
+name = "Your Name"          # home page heading, page titles, footer; defaults to the title
 email = "you@example.org"
 # avatar = "/avatar.png"
 # avatarSize = "size-m"     # size-xs, size-s, size-m, size-l, size-xl
 # avatarFirst = false       # show the avatar above your name
 ```
 
-Posts go in `content/posts/`.
+Posts go in `content/posts/`. Text in `content/_index.md` shows on the home page, above the recent posts.
 
 ### Menu
 
+Use Hugo's standard `main` menu (`header` works too). Without either, the header links each top-level section.
+
 ```toml
 [menu]
-  [[menu.header]]
+  [[menu.main]]
     name = "posts"
     weight = 10
     url = "/posts"
-  [[menu.header]]
+  [[menu.main]]
     name = "sequences"
     weight = 15
     url = "/sequences"
-  [[menu.header]]
+  [[menu.main]]
     name = "search"
     weight = 20
     url = "/search"
@@ -218,7 +223,7 @@ favicon = "/favicon.png"   # defaults to the theme's /logo/favicon.svg
 
 To add tags to `<head>`, such as analytics, create `layouts/partials/custom-head.html` in your site.
 
-To replace the footer text, use `footerHtml`:
+To replace the footer text, set Hugo's `copyright`, or use `footerHtml` for HTML:
 
 ```toml
 [params]

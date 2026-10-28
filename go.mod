@@ -1,3 +1,3 @@
-module github.com/A7med7x7/hugo-theme-nightfall-a7
+module github.com/A7med7x7/hugo-theme-afterword
 
 go 1.20

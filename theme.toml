@@ -1,8 +1,8 @@
-name = "Nightfall A7"
+name = "Afterword"
 license = "MIT"
-licenselink = "https://github.com/A7med7x7/hugo-theme-nightfall-a7/blob/main/LICENSE"
-description = "A reading-focused Hugo theme for personal essays, based on Nightfall"
-homepage = "https://github.com/A7med7x7/hugo-theme-nightfall-a7/"
+licenselink = "https://github.com/A7med7x7/hugo-theme-afterword/blob/main/LICENSE"
+description = "A reading-focused Hugo theme for personal essays and notes"
+homepage = "https://github.com/A7med7x7/hugo-theme-afterword/"
 demosite = "https://a7med7x7.github.io/"
 tags = ["minimal", "dark", "light", "blog", "personal", "search", "series"]
 features = ["blog", "sass", "dark", "light", "search", "series", "open-graph"]

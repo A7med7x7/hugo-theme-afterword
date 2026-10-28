@@ -1,12 +1,12 @@
 baseURL = "https://example.org/"
 locale = "en-us"
-title = "Nightfall A7"
-theme = "hugo-theme-nightfall-a7"
+title = "Afterword"
+theme = "hugo-theme-afterword"
 
 [params]
 user = "hello"
 hostname = "example.org"
-siteDescription = "A demo of the Nightfall A7 Hugo theme."
+description = "A demo of the Afterword Hugo theme."
 
 openLinksInNewTab = true
 
@@ -27,13 +27,13 @@ showCategories = true
 # heading = "'Lora', serif"
 
 [params.author]
-name = "Nightfall A7"
+name = "Afterword"
 email = "email@example.com"
 
 [[params.social]]
 key = 0
 name = "github"
-url = "https://github.com/A7med7x7/hugo-theme-nightfall-a7"
+url = "https://github.com/A7med7x7/hugo-theme-afterword"
 icon = "fa-brands fa-github"
 target = "_blank"
 aria = "GitHub"
@@ -57,19 +57,19 @@ unsafe = true
 pagerSize = 6
 
 [menu]
-  [[menu.header]]
+  [[menu.main]]
     name = "posts"
     weight = 10
     url = "/posts"
-  [[menu.header]]
+  [[menu.main]]
     name = "sequences"
     weight = 15
     url = "/sequences"
-  [[menu.header]]
+  [[menu.main]]
     name = "search"
     weight = 20
     url = "/search"
-  [[menu.header]]
+  [[menu.main]]
     name = "about"
     weight = 30
     url = "/about"

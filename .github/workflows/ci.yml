@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          path: hugo-theme-nightfall-a7
+          path: hugo-theme-afterword
       - name: Install Hugo
         run: |
           wget -qO "$RUNNER_TEMP/hugo.deb" "https://github.com/gohugoio/hugo/releases/download/v${{ matrix.hugo }}/hugo_extended_${{ matrix.hugo }}_linux-amd64.deb"
@@ -24,17 +24,17 @@ jobs:
       - name: Install Dart Sass
         run: sudo snap install dart-sass
       - name: Build
-        working-directory: hugo-theme-nightfall-a7/exampleSite
+        working-directory: hugo-theme-afterword/exampleSite
         run: hugo --gc --minify --themesDir ../..
       - name: Index search with Pagefind
-        working-directory: hugo-theme-nightfall-a7/exampleSite
+        working-directory: hugo-theme-afterword/exampleSite
         run: npx -y pagefind --site public
       - name: Build a bare site with only a title
         run: |
           hugo new site bare
           cd bare
           printf 'baseURL = "https://example.org/"\ntitle = "Bare Site"\ntheme = "theme"\n' > hugo.toml
-          ln -s "$GITHUB_WORKSPACE/hugo-theme-nightfall-a7" themes/theme
+          ln -s "$GITHUB_WORKSPACE/hugo-theme-afterword" themes/theme
           mkdir -p content/posts
           printf -- '---\ntitle: First Post\ndate: 2026-01-01\n---\nHello.\n' > content/posts/first.md
           hugo
