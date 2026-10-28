@@ -29,3 +29,18 @@ jobs:
       - name: Index search with Pagefind
         working-directory: hugo-theme-nightfall-a7/exampleSite
         run: npx -y pagefind --site public
+      - name: Build a bare site with only a title
+        run: |
+          hugo new site bare
+          cd bare
+          printf 'baseURL = "https://example.org/"\ntitle = "Bare Site"\ntheme = "theme"\n' > hugo.toml
+          ln -s "$GITHUB_WORKSPACE/hugo-theme-nightfall-a7" themes/theme
+          mkdir -p content/posts
+          printf -- '---\ntitle: First Post\ndate: 2026-01-01\n---\nHello.\n' > content/posts/first.md
+          hugo
+          # Header, home page, menu and footer must fall back to the title
+          grep -q 'Bare Site' public/index.html
+          grep -q 'First Post' public/index.html
+          grep -q '~/posts' public/index.html
+          ! grep -q '@ ~ \$' public/index.html
+          ! grep -q '© [0-9]* ,' public/index.html
