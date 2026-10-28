@@ -1118,3 +1118,37 @@ body:has(.sequences-shell) .main {
   color: var(--ui-ink);
   text-decoration: underline;
 }
+
+/* Home page: description, intro text and recent posts */
+.indexDescription {
+  margin: 0;
+  max-width: 34rem;
+  color: var(--ui-ink-muted);
+  line-height: 1.6;
+}
+
+.indexContent {
+  width: 100%;
+  max-width: var(--ui-content-max);
+  margin: 0 auto;
+  padding: 0 var(--ui-gutter);
+  box-sizing: border-box;
+  text-align: left;
+  line-height: 1.7;
+}
+
+.indexRecent {
+  padding-top: 8px;
+}
+
+.indexRecentTitle {
+  margin: 0 0 12px;
+  font-size: 1.25rem;
+  letter-spacing: 0.02em;
+}
+
+.indexAllPosts {
+  display: inline-block;
+  margin-top: 14px;
+  color: var(--ui-ink-muted);
+}

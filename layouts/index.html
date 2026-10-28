@@ -2,9 +2,7 @@
 <html lang="{{ site.Language.Lang }}">
 
 <head>
-    <title>
-        {{ i18n "home" }} | {{ .Site.Params.author.name }}
-    </title>
+    <title>{{ site.Title }}</title>
 
     {{ partial "head.html" . }}
 
@@ -22,15 +20,42 @@
                         {{ partial "avatar.html" . }}
                     {{ end }}
                     <div>
-                        <h1 class="indexHeader">{{ .Site.Params.author.name }}</h1>
+                        <h1 class="indexHeader">{{ partial "site-name.html" . }}</h1>
                     </div>
                     {{ if not .Site.Params.author.avatarFirst }}
                         {{ partial "avatar.html" . }}
+                    {{ end }}
+                    {{ with site.Params.description | default site.Params.siteDescription }}
+                        <p class="indexDescription">{{ . }}</p>
                     {{ end }}
                     {{ if isset .Site.Params "social" }}
                         {{ partial "social.html" . }}
                     {{ end }}
                 </div>
+
+                {{ with .Content }}
+                <div class="indexContent">
+                    {{ . }}
+                </div>
+                {{ end }}
+
+                {{/* Recent posts from the main sections. Set params.homePosts = 0 to hide them. */}}
+                {{ $count := site.Params.homePosts | default 5 }}
+                {{ $sections := site.Params.mainSections | default site.MainSections }}
+                {{ $recent := first $count (where site.RegularPages "Section" "in" $sections) }}
+                {{ if and (gt $count 0) $recent }}
+                <section class="listPage indexRecent">
+                    <h2 class="indexRecentTitle">{{ i18n "recent_posts" | default "Recent posts" }}</h2>
+                    <div class="listFeed" role="list">
+                        {{ range $recent }}
+                        {{ partial "post-card.html" . }}
+                        {{ end }}
+                    </div>
+                    {{ with site.GetPage (printf "/%s" (index $sections 0)) }}
+                    <a class="indexAllPosts" href="{{ .RelPermalink }}">{{ i18n "all_posts" | default "All posts" }} →</a>
+                    {{ end }}
+                </section>
+                {{ end }}
             </main>
         </div>
 

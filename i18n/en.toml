@@ -34,3 +34,8 @@
 
 [theme]
   other = "theme"
+[recent_posts]
+  other = "Recent posts"
+
+[all_posts]
+  other = "All posts"
