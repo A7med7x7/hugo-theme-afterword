@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{{ "css/light-theme.css" | relURL }}">
 
 <!-- Open Graph / Facebook -->
-{{ $siteDescription := or .Site.Params.siteDescription .Site.Params.sitedescription .Site.Params.SiteDescription .Site.Title }}
+{{ $siteDescription := or site.Params.description site.Params.siteDescription .Site.Title }}
 {{ $pageTitle := .Title }}
 {{ $pageDescription := $siteDescription }}
 
