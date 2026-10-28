@@ -9,7 +9,7 @@ A reading-focused Hugo theme for personal essays and notes, with a serif reading
 
 See it in use at [a7med7x7.github.io](https://a7med7x7.github.io/).
 
-![Dark mode post](https://raw.githubusercontent.com/A7med7x7/hugo-theme-afterword/main/images/screenshot.png)
+![Home page in dark mode](https://raw.githubusercontent.com/A7med7x7/hugo-theme-afterword/main/images/screenshot.png)
 
 | Light mode | Sequences |
 | --- | --- |
